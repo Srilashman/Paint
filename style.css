@@ -17,11 +17,10 @@ body {
 }
 .square:hover {
     cursor: pointer;
-    background-color: black;
+    background-color: var(--bg-color);
 }
 
 .locked {
-    background-color: black !important;
     cursor: default !important;
 }
 .paint-container {
@@ -62,6 +61,7 @@ body {
 
 .erase-button {
     margin-right: -50px;
+    cursor: pointer;
 }
 .clear-button {
     position: relative;
@@ -70,4 +70,46 @@ body {
 
 .clear-button:hover {
     cursor: pointer;
+}
+
+.colors-container {
+    display: grid;
+    grid-template-rows: repeat(4, 50px); 
+    gap: 10px;
+    justify-content: center; /* Center grid horizontally */
+}
+
+.black-color,
+.red-color,
+.blue-color,
+.green-color {
+    margin-left: 100px;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    border-radius: 10%;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center;
+    cursor: pointer;
+}
+
+.black-color,
+.black {
+    background-color: black;
+}
+
+.red-color,
+.red {
+    background-color: red;
+}
+
+.blue-color,
+.blue {
+    background-color: blue;
+}
+
+.green-color,
+.green {
+    background-color: green;
 }

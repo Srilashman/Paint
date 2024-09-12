@@ -1,5 +1,8 @@
 let drawing = false;
 let erase = false;
+let color = "black";
+const root = document.documentElement;
+root.style.setProperty("--bg-color", color);
 document.addEventListener("DOMContentLoaded", function() {
     const board = document.getElementById("paint-board");
     for(let i = 0; i < 625; i++){
@@ -13,8 +16,13 @@ document.addEventListener("DOMContentLoaded", function() {
         if(e.target.classList.contains("square")) {
             if (erase) {
                 e.target.classList.remove("locked");
+                e.target.classList.remove("black");
+                e.target.classList.remove("red");
+                e.target.classList.remove("blue");
+                e.target.classList.remove("green");
             } else {
                 e.target.classList.add("locked");
+                e.target.classList.add(color);
             }
             drawing = true;
         }
@@ -23,8 +31,13 @@ document.addEventListener("DOMContentLoaded", function() {
         if(drawing && e.target.classList.contains("square")) {
             if (erase) {
                 e.target.classList.remove("locked");
+                e.target.classList.remove("black");
+                e.target.classList.remove("red");
+                e.target.classList.remove("blue");
+                e.target.classList.remove("green");
             } else {
                 e.target.classList.add("locked");
+                e.target.classList.add(color);
             }
         }
     });
@@ -46,5 +59,25 @@ document.addEventListener("DOMContentLoaded", function() {
     erase_button.addEventListener("click", function() {
         erase = !erase;
         drawing = false;
+    });
+    const black = document.getElementById("black-color");
+    const red = document.getElementById("red-color");
+    const blue = document.getElementById("blue-color");
+    const green = document.getElementById("green-color");
+    black.addEventListener("click", function() {
+        color = "black";
+        root.style.setProperty("--bg-color", color);
+    });
+    red.addEventListener("click", function() {
+        color = "red";
+        root.style.setProperty("--bg-color", color);
+    });
+    blue.addEventListener("click", function() {
+        color = "blue";
+        root.style.setProperty("--bg-color", color);
+    });
+    green.addEventListener("click", function() {
+        color = "green";
+        root.style.setProperty("--bg-color", color);
     });
 });
