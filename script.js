@@ -22,6 +22,10 @@ document.addEventListener("DOMContentLoaded", function() {
                 e.target.classList.remove("green");
             } else {
                 e.target.classList.add("locked");
+                e.target.classList.remove("black");
+                e.target.classList.remove("red");
+                e.target.classList.remove("blue");
+                e.target.classList.remove("green");
                 e.target.classList.add(color);
             }
             drawing = true;
@@ -37,6 +41,10 @@ document.addEventListener("DOMContentLoaded", function() {
                 e.target.classList.remove("green");
             } else {
                 e.target.classList.add("locked");
+                e.target.classList.remove("black");
+                e.target.classList.remove("red");
+                e.target.classList.remove("blue");
+                e.target.classList.remove("green");
                 e.target.classList.add(color);
             }
         }
@@ -53,6 +61,10 @@ document.addEventListener("DOMContentLoaded", function() {
         for(let i = 0; i < 625; i++){
             const sq = document.getElementById(`square${i}`);
             sq.classList.remove("locked");
+            sq.classList.remove("black");
+            sq.classList.remove("red");
+            sq.classList.remove("blue");
+            sq.classList.remove("green");
         }
     });
     const erase_button = document.getElementById("erase-button");
