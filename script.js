@@ -71,6 +71,8 @@ document.addEventListener("DOMContentLoaded", function() {
     erase_button.addEventListener("click", function() {
         erase = !erase;
         drawing = false;
+        color = "black";
+
     });
     const black = document.getElementById("black-color");
     const red = document.getElementById("red-color");
@@ -92,4 +94,102 @@ document.addEventListener("DOMContentLoaded", function() {
         color = "green";
         root.style.setProperty("--bg-color", color);
     });
+    function encoder() {
+        let code = "";
+        for (let i = 0; i < 625; i++) {
+            const sq = document.getElementById(`square${i}`);
+            const style = window.getComputedStyle(sq);
+            const curr_color = style.backgroundColor;
+            switch(curr_color) {
+                case "rgb(255, 255, 255)": // white
+                    code += '0';
+                    break;
+                case "rgb(0, 0, 0)": // black
+                    code += '1';
+                    break;
+                case "rgb(255, 0, 0)": // red
+                    code += '2';
+                    break;
+                case "rgb(0, 0, 255)": // green
+                    code += '3';
+                    break;
+                case "rgb(0, 128, 0)": // blue
+                    code += '4';
+                    break;
+                default:
+                    code += curr_color;
+                    break;
+            }
+        }
+    
+        // Ensure that the code string has exactly 625 characters
+    
+        console.log(code);
+    
+        return code;
+    }
+    
+    
+    function decoder(code) {
+        console.log(code.length);
+        if(code.length !== 625){
+            alert("Invalid code");
+            return -1;
+        }
+        return code;
+    }
+    
+    
+    
+    const get_code = document.getElementById("generate-code");
+    get_code.addEventListener("click", function() {
+        let code = encoder();
+        const print_code = document.getElementById("code");
+        print_code.textContent = code;
+
+    });
+    const try_code = document.getElementById("use-code");
+    try_code.addEventListener("click", function() {
+        let use_code = document.getElementById("prev-code");
+        let val = decoder(use_code.value);        
+        if(val === -1){
+            console.log("unexpected");
+        }
+        else if(val === 0){
+            console.log("nothing")
+        }
+        else{
+            colorboard(val);
+        }
+    });
+    function colorboard(val){
+        for(let i = 0; i < 625; i++){
+            const clr = val[i];
+            const sq = document.getElementById(`square${i}`);
+            sq.classList.add("locked");
+            sq.classList.remove("black");
+            sq.classList.remove("red");
+            sq.classList.remove("blue");
+            sq.classList.remove("green");
+            switch(clr){
+                case '0':
+                    sq.classList.remove("locked");
+                    break;
+                case '1':
+                    sq.classList.add("black");
+                    break;
+                case '2':
+                    sq.classList.add("red");
+                    break;
+                case '3':
+                    sq.classList.add("blue");
+                    break;
+                case '4':
+                    sq.classList.add("green");
+                    break;
+                default:
+                    console.log("see");
+            }
+        }
+    }
 });

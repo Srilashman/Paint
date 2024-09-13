@@ -4,6 +4,7 @@ body {
     justify-content: center;
     align-items: center;
     margin: 0; /* Remove default margin */
+    background-image: linear-gradient(lightblue, darkblue);
 }
 
 .square {
@@ -31,6 +32,7 @@ body {
     flex-direction: column; /* Stack text and grid vertically */
     justify-content: center; /* Center vertically */
     align-items: center;     /* Center horizontally */
+
 }
 
 .paint-text {
@@ -113,3 +115,46 @@ body {
 .green {
     background-color: green;
 }
+
+.code-container {
+    display: grid;
+    grid-template-rows: repeat(2, 50px); 
+    grid-template-columns: repeat(2, 200px);
+    gap: 10px;
+    justify-content: center; /* Center grid horizontally */
+    position: relative;
+    top: 300px;
+    align-items: center;
+    position: absolute;
+    top: 600px;
+    background-color: white;
+    width: 450px;
+    height: 125px;
+    border: 2px solid black;
+}
+
+.code {
+    font-size: 1rem;
+    overflow-y: auto;
+}
+
+.generate-code {
+    background-color: gold;
+}
+
+.generate-code:hover,
+.use-code:hover {
+    cursor: pointer;
+}
+
+.use-code {
+    background-color: gray;
+}
+
+.generate-code,
+.use-code {
+    width: 125px;
+    height: 25px;
+    text-align: center;
+}
+
