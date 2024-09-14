@@ -132,9 +132,16 @@ document.addEventListener("DOMContentLoaded", function() {
     
     function decoder(code) {
         console.log(code.length);
-        if(code.length !== 625){
+        if(code.length > 625){
             alert("Invalid code");
             return -1;
+        }
+        for(let i = 0; i < code.length; i++){
+            const n = parseInt(code[i]);
+            if(!((n >= 0) && (n <= 4))){
+                alert("Invalid code");
+                return -1;
+            }
         }
         return code;
     }
@@ -163,7 +170,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
     function colorboard(val){
-        for(let i = 0; i < 625; i++){
+        for(let i = 0; i < val.length; i++){
             const clr = val[i];
             const sq = document.getElementById(`square${i}`);
             sq.classList.add("locked");
